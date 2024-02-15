@@ -1,5 +1,4 @@
 ﻿
-
 namespace PM2E1507673
 {
     public partial class MainPage : ContentPage
@@ -53,6 +52,8 @@ namespace PM2E1507673
                 else
                 {
                     // Handle case where location permission is not granted
+                    await DisplayAlert("Error", "Permiso de Ubicación no otorgado. El Permiso es necesario para utilizar la aplicacion.", "OK");
+                    Application.Current.Quit();
                 }
             }
             catch (Exception ex)
