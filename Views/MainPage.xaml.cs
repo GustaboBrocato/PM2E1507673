@@ -70,6 +70,11 @@
         {
 
         }
+
+        private void btnTomarFoto_Clicked(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
