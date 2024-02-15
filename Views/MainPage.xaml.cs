@@ -31,7 +31,11 @@ namespace PM2E1507673
                 if (locationPermissionStatus == PermissionStatus.Granted)
                 {
                     // Get the last known location
-                    var location = await Geolocation.GetLastKnownLocationAsync();
+                    var location = await Geolocation.GetLocationAsync(new GeolocationRequest
+                    {
+                        DesiredAccuracy = GeolocationAccuracy.Default,
+                        Timeout = TimeSpan.FromSeconds(10) // Specify a timeout if needed
+                    });
 
                     if (location != null)
                     {
@@ -145,7 +149,7 @@ namespace PM2E1507673
 
         private void btnListaSitios_Clicked(object sender, EventArgs e)
         {
-
+            Navigation.PushAsync(new Views.listaSitios());
         }
 
         private void btnSalir_Clicked(object sender, EventArgs e)
