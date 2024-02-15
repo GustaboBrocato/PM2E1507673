@@ -66,6 +66,17 @@
                             HorizontalOptions="FillAndExpand"
                             Source="defaultsite.png" />
 
+                        <Button
+                            x:Name="btnTomarFoto"
+                            Margin="10,0,0,0"
+                            Clicked="btnAgregar_Clicked"
+                            FontSize="14"
+                            HeightRequest="40"
+                            HorizontalOptions="FillAndExpand"
+                            SemanticProperties.Hint="Agregar a Carrito"
+                            Text="Agregar" />
+
+
                         <Label
                             Margin="0,0,0,5"
                             FontSize="14"
@@ -99,7 +110,7 @@
 
                         <Label
                             x:Name="labelLongitude"
-                            Margin="0,0,0,0"
+                            Margin="0,0,0,10"
                             FontSize="14"
                             HorizontalOptions="Center"
                             HorizontalTextAlignment="Center"
@@ -107,10 +118,21 @@
                             TextColor="Black"
                             VerticalOptions="Start"
                             VerticalTextAlignment="Center" />
+
+                        <Label
+                            Margin="0,0,0,5"
+                            FontSize="14"
+                            HorizontalOptions="Center"
+                            HorizontalTextAlignment="Center"
+                            Text="Descripción"
+                            TextColor="Black"
+                            VerticalOptions="Start"
+                            VerticalTextAlignment="Center" />
+
                         <Entry
                             x:Name="entryDescripcion"
                             Margin="0,0,0,0"
-                            Background="Gray"
+                            Background="White"
                             FontSize="14"
                             HorizontalOptions="FillAndExpand"
                             HorizontalTextAlignment="Center"
@@ -132,7 +154,7 @@
 
             <Button
                 x:Name="btnAgregar"
-                Margin="0,0,0,0"
+                Margin="10,0,0,0"
                 Clicked="btnAgregar_Clicked"
                 FontSize="14"
                 HeightRequest="40"
@@ -141,7 +163,7 @@
                 Text="Agregar" />
             <Button
                 x:Name="btnListaSitios"
-                Margin="0,0,0,0"
+                Margin="10,0,10,0"
                 Clicked="btnListaSitios_Clicked"
                 FontSize="14"
                 HeightRequest="40"
@@ -150,7 +172,7 @@
                 Text="Lista de Sitios" />
             <Button
                 x:Name="btnSalir"
-                Margin="0,0,0,0"
+                Margin="0,0,10,0"
                 Clicked="btnSalir_Clicked"
                 FontSize="14"
                 HeightRequest="40"
