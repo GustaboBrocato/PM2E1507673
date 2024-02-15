@@ -61,10 +61,13 @@
 
                         <Image
                             x:Name="imgSitio"
-                            Margin="0,0,0,0"
+                            Margin="0,0,0,10"
                             Aspect="AspectFit"
+                            HeightRequest="200"
                             HorizontalOptions="FillAndExpand"
-                            Source="defaultsite.png" />
+                            Source="defaultsite.png"
+                            VerticalOptions="CenterAndExpand"
+                            WidthRequest="200" />
 
                         <Button
                             x:Name="btnTomarFoto"
@@ -73,7 +76,7 @@
                             FontSize="12"
                             HeightRequest="40"
                             HorizontalOptions="FillAndExpand"
-                            SemanticProperties.Hint="Agregar a Carrito"
+                            SemanticProperties.Hint="Tomar Foto"
                             Text="Agregar" />
 
 
@@ -159,7 +162,7 @@
                 FontSize="12"
                 HeightRequest="40"
                 HorizontalOptions="FillAndExpand"
-                SemanticProperties.Hint="Agregar a Carrito"
+                SemanticProperties.Hint="Agregar Sitio"
                 Text="Agregar" />
             <Button
                 x:Name="btnListaSitios"
@@ -168,7 +171,7 @@
                 FontSize="12"
                 HeightRequest="40"
                 HorizontalOptions="FillAndExpand"
-                SemanticProperties.Hint="Agregar a Carrito"
+                SemanticProperties.Hint="Lista de Sitios"
                 Text="Lista de Sitios" />
             <Button
                 x:Name="btnSalir"
@@ -177,7 +180,7 @@
                 FontSize="12"
                 HeightRequest="40"
                 HorizontalOptions="FillAndExpand"
-                SemanticProperties.Hint="Agregar a Carrito"
+                SemanticProperties.Hint="Salir"
                 Text="Salir de App" />
 
         </StackLayout>

@@ -15,7 +15,7 @@ namespace PM2E1507673.Models
             public int Id { get; set; }
             public double latitud { get; set; }
             public double longitud { get; set; }
-            public string descripcion { get; set; }
-            public string imagen { get; set; }
+            public string? descripcion { get; set; }
+            public string? imagen { get; set; }
     }
 }

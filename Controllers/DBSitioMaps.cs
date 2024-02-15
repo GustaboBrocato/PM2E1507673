@@ -38,7 +38,7 @@ namespace PM2E1507673.Controllers
         }
 
         //Crear metodos crud para la clase de sitio
-        public async Task<int> mapaSitio(sitioMaps sitiomaps)
+        public async Task<int> InsertMapaSitio(sitioMaps sitiomaps)
         {
             await Init();
             if (sitiomaps.Id == 0)

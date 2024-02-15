@@ -16,8 +16,10 @@ namespace PM2E1507673
                 })
                 .UseMauiMaps();
 
+            builder.Services.AddSingleton<Controllers.DBSitioMaps>();
+
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
 
             return builder.Build();
