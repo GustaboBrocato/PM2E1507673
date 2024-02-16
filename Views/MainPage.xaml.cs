@@ -46,6 +46,8 @@ namespace PM2E1507673
                     {
                         // Handle case where location is null
                         // (Could not determine the location)
+                        
+                        await DisplayAlert("Alerta", "El GPS se encuentra desactivado, por favor activar el GPS!", "Ok");
                         await DisplayGpsNotEnabledAlert();
                     }
                 }
@@ -56,15 +58,19 @@ namespace PM2E1507673
                     Application.Current.Quit();
                 }
             }
-            catch (Exception ex)
+            catch (FeatureNotEnabledException)
             {
+                // Handle exceptions
+                await DisplayAlert("Alerta", "El GPS se encuentra desactivado, por favor activar el GPS!", "Ok");
                 
             }
+       
         }
 
         private async Task DisplayGpsNotEnabledAlert()
         {
             var result = await DisplayAlert("GPS Not Enabled", "Please enable GPS to use this app.", "Go to Settings", "Cancel");
+            
 
             if (result)
             {
