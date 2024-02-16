@@ -24,21 +24,21 @@ namespace PM2E1507673
         {
             try
             {
-                // Check if location permission is granted
+                // Revisa si el permiso de ubicacion ha sido concedido
                 var locationPermissionStatus = await Permissions.RequestAsync<Permissions.LocationWhenInUse>();
 
                 if (locationPermissionStatus == PermissionStatus.Granted)
                 {
-                    // Get the last known location
+                    // Obtiene la ubicacion
                     var location = await Geolocation.GetLocationAsync(new GeolocationRequest
                     {
                         DesiredAccuracy = GeolocationAccuracy.Default,
-                        Timeout = TimeSpan.FromSeconds(10) // Specify a timeout if needed
+                        Timeout = TimeSpan.FromSeconds(10)
                     });
 
                     if (location != null)
                     {
-                        // Update the labels with latitude and longitude
+                        // Coloca la latitude y longitud en los labels
                         labelLatitude.Text = $"{location.Latitude}";
                         labelLongitude.Text = $"{location.Longitude}";
                     }
@@ -51,14 +51,14 @@ namespace PM2E1507673
                 }
                 else
                 {
-                    // Handle case where location permission is not granted
+                    // Cuando el permiso no es otorgado
                     await DisplayAlert("Error", "Permiso de Ubicación no otorgado. El Permiso es necesario para utilizar la aplicacion.", "OK");
                     Application.Current.Quit();
                 }
             }
             catch (Exception ex)
             {
-                // Handle exceptions
+                
             }
         }
 
@@ -68,7 +68,7 @@ namespace PM2E1507673
 
             if (result)
             {
-                // Open the device settings to enable GPS
+                // Abre los ajustes para prender el gps
                 await Launcher.OpenAsync(new Uri("ms-settings:privacy-location"));
             }
         }
@@ -101,7 +101,7 @@ namespace PM2E1507673
 
             if(photo != null)
             {
-                if(string.IsNullOrEmpty(latitud) || string.IsNullOrEmpty(longitud))
+                if(labelLatitude.Text.Equals("00.00") || labelLongitude.Text.Equals("00.00"))
                 {
                     await DisplayAlert("Error", "No hay datos de longitud y latitud", "OK");
                     return;
@@ -132,7 +132,13 @@ namespace PM2E1507673
                     if (await controller.InsertMapaSitio(sitio) > 0)
                     {
                         await DisplayAlert("Aviso", "Registro Ingresado con Exito!", "OK");
-                        await Navigation.PopAsync();
+                        labelLatitude.Text = "00.00";
+                        labelLongitude.Text = "00.00";
+                        InitializePage();
+                        entryDescripcion.Text = null;
+                        photo = null;
+                        imgSitio.Source = "defaultsite.png";
+
                     }
                     else
                     {
@@ -155,7 +161,7 @@ namespace PM2E1507673
 
         private void btnSalir_Clicked(object sender, EventArgs e)
         {
-
+            Application.Current.Quit();
         }
 
         private async void btnTomarFoto_Clicked(object sender, EventArgs e)

@@ -1,4 +1,5 @@
 ﻿using Microsoft.Extensions.Logging;
+using Syncfusion.Maui.Core.Hosting;
 
 namespace PM2E1507673
 {
@@ -14,7 +15,8 @@ namespace PM2E1507673
                     fonts.AddFont("OpenSans-Regular.ttf", "OpenSansRegular");
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 })
-                .UseMauiMaps();
+                .UseMauiMaps()
+                .ConfigureSyncfusionCore();
 
             builder.Services.AddSingleton<Controllers.DBSitioMaps>();
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
@@ -18,4 +19,6 @@ namespace PM2E1507673.Models
             public string? descripcion { get; set; }
             public string? imagen { get; set; }
     }
+
+
 }

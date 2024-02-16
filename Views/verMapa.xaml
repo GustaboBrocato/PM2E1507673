@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="PM2E1507673.Views.verMapa"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:maps="http://schemas.microsoft.com/dotnet/2021/maui/maps"
+    Title="verMapa">
+    <Grid>
+        <!--  Content Grid  -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <StackLayout Grid.Row="0">
+            <!--  Boton Regresar  -->
+            <StackLayout
+                Margin="0,0,0,0"
+                Padding="0,10,0,10"
+                BackgroundColor="SkyBlue"
+                Orientation="Horizontal">
+
+                <Button
+                    x:Name="btnSalir"
+                    Margin="20,0,0,0"
+                    Background="White"
+                    Clicked="btnSalir_Clicked"
+                    FontSize="20"
+                    HeightRequest="45"
+                    Text="Atras"
+                    TextColor="Black"
+                    WidthRequest="90" />
+
+            </StackLayout>
+
+
+        </StackLayout>
+
+        <!--  Body: Collection View  -->
+        <ScrollView Grid.Row="1">
+            <StackLayout HorizontalOptions="CenterAndExpand" VerticalOptions="Fill">
+                <maps:Map
+                    x:Name="mapa"
+                    Margin="10,0,10,0"
+                    HeightRequest="500"
+                    IsShowingUser="True">
+                    <maps:Map.Pins>
+                        <!--  Pins will be added dynamically in code-behind  -->
+                    </maps:Map.Pins>
+                </maps:Map>
+            </StackLayout>
+        </ScrollView>
+
+        <!--  Button for sharing  -->
+        <StackLayout Grid.Row="2">
+            <Button
+                x:Name="btnShare"
+                BackgroundColor="SkyBlue"
+                Clicked="btnShare_Clicked"
+                HorizontalOptions="FillAndExpand"
+                Text="Share Site"
+                TextColor="White" />
+        </StackLayout>
+    </Grid>
+</ContentPage>

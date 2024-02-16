@@ -1,10 +1,14 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="PM2E1507673.MainPage"
+    x:Class="PM2E1507673.Views.editSitio"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:convert="clr-namespace:PM2E1507673.Controllers"
     Title=""
     BackgroundImageSource="background3.jpg">
+    <ContentPage.Resources>
+        <convert:base64Image x:Key="BaseArray" />
+    </ContentPage.Resources>
 
     <Grid>
         <!--  Content Grid  -->
@@ -27,18 +31,23 @@
                 Padding="0,0,0,0"
                 BackgroundColor="Transparent"
                 Orientation="Horizontal">
-                <Image
-                    Margin="10,0,0,0"
-                    Aspect="AspectFit"
-                    HorizontalOptions="CenterAndExpand"
-                    Source="uthlogo.png"
-                    VerticalOptions="CenterAndExpand" />
+                <Button
+                    x:Name="btnRegresar"
+                    Margin="20,0,0,0"
+                    BackgroundColor="{DynamicResource TealPrimary}"
+                    Clicked="btnRegresar_Clicked"
+                    CornerRadius="20"
+                    FontSize="12"
+                    HeightRequest="40"
+                    Text="Atras"
+                    TextColor="White"
+                    WidthRequest="90" />
                 <!--  Spacer  -->
                 <BoxView BackgroundColor="Transparent" HorizontalOptions="FillAndExpand" />
                 <Label
                     Margin="0,0,30,0"
                     FontAttributes="Bold"
-                    Text="SITE VISITOR APP"
+                    Text="ACTUALIZAR SITIO"
                     TextColor="White"
                     VerticalOptions="CenterAndExpand" />
             </StackLayout>
@@ -73,21 +82,9 @@
                             Aspect="AspectFit"
                             HeightRequest="200"
                             HorizontalOptions="FillAndExpand"
-                            Source="defaultsite.png"
+                            Source="{Binding imagen, Converter={StaticResource BaseArray}}"
                             VerticalOptions="CenterAndExpand"
                             WidthRequest="200" />
-
-                        <Button
-                            x:Name="btnTomarFoto"
-                            Margin="10,0,0,20"
-                            BackgroundColor="{DynamicResource TealPrimary}"
-                            Clicked="btnTomarFoto_Clicked"
-                            CornerRadius="20"
-                            FontSize="12"
-                            HeightRequest="40"
-                            HorizontalOptions="FillAndExpand"
-                            SemanticProperties.Hint="Tomar Foto"
-                            Text="Tomar Foto" />
 
 
                         <Label
@@ -183,42 +180,18 @@
                 Orientation="Horizontal">
 
                 <Button
-                    x:Name="btnAgregar"
-                    Margin="10,0,0,0"
+                    x:Name="btnActualizar"
+                    Margin="10,0,10,0"
                     BackgroundColor="{DynamicResource TealPrimary}"
-                    Clicked="btnAgregar_Clicked"
+                    Clicked="btnActualizar_Clicked"
                     CornerRadius="20"
                     FontSize="12"
                     HeightRequest="40"
                     HorizontalOptions="FillAndExpand"
                     SemanticProperties.Hint="Agregar Sitio"
                     Text="Agregar" />
-                <Button
-                    x:Name="btnListaSitios"
-                    Margin="10,0,10,0"
-                    BackgroundColor="{DynamicResource TealPrimary}"
-                    Clicked="btnListaSitios_Clicked"
-                    CornerRadius="20"
-                    FontSize="12"
-                    HeightRequest="40"
-                    HorizontalOptions="FillAndExpand"
-                    SemanticProperties.Hint="Lista de Sitios"
-                    Text="Lista de Sitios" />
-                <Button
-                    x:Name="btnSalir"
-                    Margin="0,0,10,0"
-                    BackgroundColor="{DynamicResource TealPrimary}"
-                    Clicked="btnSalir_Clicked"
-                    CornerRadius="20"
-                    FontSize="12"
-                    HeightRequest="40"
-                    HorizontalOptions="FillAndExpand"
-                    SemanticProperties.Hint="Salir"
-                    Text="Salir de App" />
-
             </StackLayout>
         </Frame>
 
     </Grid>
-
 </ContentPage>
