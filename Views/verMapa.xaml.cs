@@ -17,9 +17,31 @@ public partial class verMapa : ContentPage
 
     private async void VerMapa_Appearing(object sender, EventArgs e)
     {
+        try
+        {
+            // Obtiene la ubicacion
+           var location = await Geolocation.GetLocationAsync(new GeolocationRequest
+           {
+               DesiredAccuracy = GeolocationAccuracy.Default,
+               Timeout = TimeSpan.FromSeconds(10)
+           });
+        }catch(FeatureNotEnabledException) 
+        {
+            try
+            {
+                await Application.Current.MainPage.DisplayAlert("Alerta", "El GPS se encuentra desactivado. Porfavor active su GPS y abra la aplicación de nuevo!", "Ok");
+                Application.Current.Quit();
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Error in DisplayGpsNotEnabledAlert: {ex.Message}");
+            }
+        }
+        
+
         await colocarSitio(SelectedSitio.latitud, SelectedSitio.longitud);
         MoveMapToRegion(SelectedSitio.latitud, SelectedSitio.longitud);
-
 
         this.Appearing -= VerMapa_Appearing;
     }

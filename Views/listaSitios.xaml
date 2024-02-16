@@ -90,6 +90,12 @@
                                     HorizontalOptions="Center"
                                     IsClippedToBounds="True"
                                     WidthRequest="80">
+                                    <Frame.GestureRecognizers>
+                                        <TapGestureRecognizer
+                                            x:Name="TapGestureFoto"
+                                            CommandParameter="verFoto"
+                                            Tapped="TapGestureFoto_Tapped" />
+                                    </Frame.GestureRecognizers>
 
                                     <Image
                                         Aspect="AspectFill"

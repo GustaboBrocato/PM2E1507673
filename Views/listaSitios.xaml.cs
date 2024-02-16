@@ -105,5 +105,12 @@ public partial class listaSitios : ContentPage
         }
     }
 
-
+    private async void TapGestureFoto_Tapped(object sender, TappedEventArgs e)
+    {
+        if( SelectedSitio != null)
+        {
+            await Navigation.PushAsync(new Views.verFoto(SelectedSitio));
+            SelectedSitio = null;
+        }
+    }
 }

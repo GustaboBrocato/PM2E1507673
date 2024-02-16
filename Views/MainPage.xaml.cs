@@ -42,13 +42,10 @@ namespace PM2E1507673
                         labelLatitude.Text = $"{location.Latitude}";
                         labelLongitude.Text = $"{location.Longitude}";
                     }
-                    else
+                    else if (labelLatitude.Text.Equals("00.00") || labelLongitude.Text.Equals("00.00"))
                     {
-                        // Handle case where location is null
-                        // (Could not determine the location)
-                        
-                        await DisplayAlert("Alerta", "El GPS se encuentra desactivado, por favor activar el GPS!", "Ok");
-                        await DisplayGpsNotEnabledAlert();
+                        // Cuando la ubicacion es nula
+                        await DisplayAlert("Alerta", "El GPS se encuentra desactivado. Porfavor active su GPS y abra la aplicación de nuevo!", "Ok");
                     }
                 }
                 else
@@ -60,23 +57,19 @@ namespace PM2E1507673
             }
             catch (FeatureNotEnabledException)
             {
-                // Handle exceptions
-                await DisplayAlert("Alerta", "El GPS se encuentra desactivado, por favor activar el GPS!", "Ok");
-                
+                try
+                {
+                    await Application.Current.MainPage.DisplayAlert("Alerta", "El GPS se encuentra desactivado. Porfavor active su GPS y abra la aplicación de nuevo!", "Ok");
+                    Application.Current.Quit();
+
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Error in DisplayGpsNotEnabledAlert: {ex.Message}");
+                }
+
             }
        
-        }
-
-        private async Task DisplayGpsNotEnabledAlert()
-        {
-            var result = await DisplayAlert("GPS Not Enabled", "Please enable GPS to use this app.", "Go to Settings", "Cancel");
-            
-
-            if (result)
-            {
-                // Abre los ajustes para prender el gps
-                await Launcher.OpenAsync(new Uri("ms-settings:privacy-location"));
-            }
         }
 
         public string? GetImg64()
@@ -105,7 +98,7 @@ namespace PM2E1507673
             string longitud = labelLongitude.Text;
             string descripcion = entryDescripcion.Text;
 
-            if(photo != null)
+            if (photo != null)
             {
                 if(labelLatitude.Text.Equals("00.00") || labelLongitude.Text.Equals("00.00"))
                 {
