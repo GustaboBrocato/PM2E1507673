@@ -11,6 +11,7 @@ public partial class verMapa : ContentPage
     {
         InitializeComponent();
         SelectedSitio = selectedSitio;
+        //labelSitio.Text = SelectedSitio.descripcion;
         this.Appearing += VerMapa_Appearing;
     }
 
@@ -71,6 +72,7 @@ public partial class verMapa : ContentPage
             Address = adminDistrict2 + ", " + adminDistrict + ", " + countryRegion
         };
 
+        labelSitio.Text = (adminDistrict2 + ", " + adminDistrict + ", " + countryRegion).ToString();
         mapa.Pins.Add(marker);
     }
 

@@ -5,21 +5,26 @@ namespace PM2E1507673.Views;
 public partial class editSitio : ContentPage
 {
     private Models.sitioMaps SelectedSitio { get; }
-    public editSitio(Models.sitioMaps selectedSitio)
-	{
-		InitializeComponent();
-        SelectedSitio = selectedSitio;
-        byte[] imageData = PhotoHelper.GetImageArrayFromBase64(SelectedSitio.imagen);
+    private Models.sitioMaps editedSitio;
 
-        imgSitio.Source = ImageSource.FromStream(() => new System.IO.MemoryStream(imageData));
-        labelLatitude.Text = (SelectedSitio.latitud).ToString();
-        labelLongitude.Text = (SelectedSitio.longitud).ToString();
-        entryDescripcion.Text = SelectedSitio.descripcion;
+    public editSitio(Models.sitioMaps selectedSitio)
+    {
+        InitializeComponent();
+        SelectedSitio = selectedSitio;
+        BindingContext = editedSitio = selectedSitio;
     }
 
-    private void btnActualizar_Clicked(object sender, EventArgs e)
+    private async void btnActualizar_Clicked(object sender, EventArgs e)
     {
+        // Update the 'descripcion' field in the editedSitio object
+        editedSitio.descripcion = entryDescripcion.Text;
 
+        // Call the update method with the editedSitio object
+        await App.DBSitioMapsController.updateSitios(editedSitio);
+
+        // Display an alert or navigate back
+        await DisplayAlert("Sitio Actualizado!", "La información del sitio ha sido actualizada!", "OK");
+        await Navigation.PopAsync();
     }
 
     private void btnRegresar_Clicked(object sender, EventArgs e)

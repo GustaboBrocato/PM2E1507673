@@ -103,7 +103,7 @@
                             FontSize="16"
                             HorizontalOptions="Center"
                             HorizontalTextAlignment="Center"
-                            Text="00.00"
+                            Text="{Binding latitud}"
                             TextColor="{DynamicResource Accent}"
                             VerticalOptions="Start"
                             VerticalTextAlignment="Center" />
@@ -126,7 +126,7 @@
                             FontSize="16"
                             HorizontalOptions="Center"
                             HorizontalTextAlignment="Center"
-                            Text="00.00"
+                            Text="{Binding longitud}"
                             TextColor="{DynamicResource Accent}"
                             VerticalOptions="Start"
                             VerticalTextAlignment="Center" />
@@ -154,6 +154,7 @@
                                 HorizontalOptions="FillAndExpand"
                                 HorizontalTextAlignment="Center"
                                 Placeholder="Descripción"
+                                Text="{Binding descripcion}"
                                 TextColor="{DynamicResource Accent}"
                                 VerticalOptions="CenterAndExpand"
                                 VerticalTextAlignment="Center"
@@ -188,7 +189,7 @@
                     FontSize="12"
                     HeightRequest="40"
                     HorizontalOptions="FillAndExpand"
-                    SemanticProperties.Hint="Agregar Sitio"
+                    SemanticProperties.Hint="Actualizar Sitio"
                     Text="Agregar" />
             </StackLayout>
         </Frame>
